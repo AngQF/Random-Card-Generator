@@ -3,27 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
     <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap"
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
     />
-    <link rel="shortcut icon" href="./4geeks.ico" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>Random Card Generator</title>
   </head>
-  <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
+
+  <body onload="randomCardGenerator()">
+    <div class="card">
+      <div class="top-card"></div>
+      <div class="card-value">7</div>
+      <div class="bottom-card"></div>
+    </div>
+    <div class="heart"></div>
+    <div class="buttons d-flex justify-content-center p-2">
+      <button
+        id="button1"
+        class="btn btn-secondary text-dark border-light shadow"
+      >
+        Generar Aleatorio
+      </button>
+      <button id="button2" class="btn btn-secondary text-dark border-light">
+        Resetear
+      </button>
     </div>
   </body>
 </html>
