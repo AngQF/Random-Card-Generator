@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { afterWrite } from "@popperjs/core";
 import "bootstrap";
 import "./style.css";
 
@@ -11,7 +12,8 @@ const values = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
 const top = document.querySelector(".top-card");
 const bottom = document.querySelector(".bottom-card");
 const val = document.querySelector(".card-value");
-const buttonRandom = document.querySelector("#button1");
+const btnRandom = document.querySelector("#button1");
+const btnReset = document.querySelector("#button2");
 
 const generateCard = () => {
   let arrCards = [];
@@ -20,23 +22,38 @@ const generateCard = () => {
     for (let j of values) {
       let newCard = [i, j];
       arrCards.push(newCard);
-      val.innerHTML = [j];
+      arrCards.sort(() => Math.random() - 0.5);
     }
   }
-  let arrCardsRandom = Math.floor(Math.random() * arrCards.length);
-  let resultCards = arrCards[arrCardsRandom];
+  console.log(arrCards.length);
 
-  top.innerHTML = bottom.innerHTML = resultCards[0];
+  top.innerHTML = bottom.innerHTML = arrCards[0][0];
   if (top.innerHTML === heart || top.innerHTML === diamond) {
     top.style.color = bottom.style.color = "red";
   } else {
     top.style.color = bottom.style.color = "black";
   }
 
-  val.innerHTML = resultCards[1];
+  val.innerHTML = arrCards[0][1];
 };
 
-buttonRandom.addEventListener("click", generateCard);
+let countClick = 0;
+btnRandom.addEventListener("click", () => {
+  generateCard();
+  countClick += 1;
+  if (countClick === 51) {
+    btnRandom.disabled = true;
+  }
+  if (btnRandom.disabled == true) {
+    setTimeout(function() {
+      alert("Ya mostró todo");
+    }, 1000);
+  }
+});
+
+btnReset.addEventListener("click", () => {
+  location.reload();
+});
 
 window.onload = () => {
   generateCard();
